@@ -1,0 +1,62 @@
+<?php 
+          $allmenu = $menus; 
+          $smenu = $menus;
+          
+          ?>
+          @foreach ($menus as $menu)
+            @if($menu->menu_type == 0)
+              <li class="drop-down"><a href="#"> {{$menu->title}} </a>
+                <ul>
+                  @foreach ($allmenu as $submenu)
+                    @if($menu->id == $submenu->menu_type)
+                        <li class=""><a href="/page/{{$submenu->id}} "> {{$submenu->title}} </a>
+
+
+                          
+                      </li>
+                    @endif
+                  @endforeach
+              </ul></li>
+            @endif
+
+          @endforeach
+
+
+
+
+          -------------------------------
+          
+@foreach($menus as $menu)
+
+          <li  class="drop-down">
+
+              <a href="https://bootstrapthemes.co">
+
+                 {{ $menu->title }}
+
+              </a>
+
+              <ul>
+
+                @if(($menu->childs)!=0)
+
+                  @include('components.menusub',['childs' => $menu->childs])
+
+                @endif
+
+              </ul>
+
+          </li>
+
+          @endforeach
+
+
+                   @foreach ($kafedra as $item)
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+            <div class="icon-box icon-box-cyan">
+              <div class="icon"><i class="{!!$item->icon!!}"></i></div>
+              <h4 class="title"><a href=""> {!!$item->title!!} </a></h4>
+              <p class="description"> {!!$item->description!!} </p>
+            </div>
+          </div>
+          @endforeach
